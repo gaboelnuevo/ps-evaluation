@@ -9,15 +9,16 @@ function generateMonthly(startDate, endDate, times) {
   var shedule = [];
   for (i = 0; i < times; i++) {
     var obj = {};
-    obj.startDate = i === 0 ? startDate : addDays(shedule[i - 1].endDate, 1);
+    obj.startDate = i === 0 ? startDate : getFirstDayOfMonth(addDays(shedule[i - 1].endDate, 1));
     obj.endDate = i === (times - 1) ? endDate : getLastDayOfMonth(obj.startDate);
-    shedule.push({
-      startDate: startDate,
-      endDate: endDate
-    });
+    shedule.push(obj);
   }
 
   return shedule;
+}
+
+function getFirstDayOfMonth(date) {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
 }
 
 function getLastDayOfMonth(date) {
