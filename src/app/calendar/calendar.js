@@ -2,7 +2,7 @@ function CalendarController() {
 
 }
 
-angular.module('heroApp').component('heroDetail', {
+angular.module('app').component('calendar', {
   templateUrl: 'app/calendar/calendar.html',
   controller: CalendarController,
   bindings: {
