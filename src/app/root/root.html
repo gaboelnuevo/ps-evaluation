@@ -1,0 +1,13 @@
+<h1>{{ $ctrl.title }}</h1>
+<form>
+  <h4>Start Date</h4>
+  <input type="text" name="startDate" ng-model="$ctrl.startDate" ui-date-mask>
+  <br>
+  <h4>End Date</h4>
+  <input type="text" name="endDate" ng-model="$ctrl.endDate" ui-date-mask>
+  <h4>Contry Code</h4>
+  <input type="text" name="contryCode" ng-model="$ctrl.contryCode">
+  <br>
+  <br>
+  <button ng-click="$ctrl.onGenerate()">Generate</button>
+</form>
