@@ -22,7 +22,7 @@ function generateMonthly(startDate, endDate, times) {
     nStartSpanDays = obj.startDate.getDay();
     nEndSpanDays = 6 - obj.endDate.getDay();
 
-    data = fillArray(null, nStartSpanDays).concat(days).concat(fillArray(null, nEndSpanDays));
+    data = fillArray(0, nStartSpanDays).concat(days).concat(fillArray(0, nEndSpanDays));
 
     obj.weeks = _.chunk(data, 7);
     shedule.push(obj);

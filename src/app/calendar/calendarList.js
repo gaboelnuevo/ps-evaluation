@@ -2,10 +2,10 @@ function CalendarListController() {
 
 }
 
-angular.module('app').component('heroList', {
+angular.module('app').component('calendarList', {
   templateUrl: 'app/calendar/calendarList.html',
   controller: CalendarListController,
   bindings: {
-    calendarList: '<'
+    list: '<'
   }
 });

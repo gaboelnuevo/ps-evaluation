@@ -11,7 +11,7 @@
   <tr>
     <td colspan="7">Month</td>
   </tr>
-  <tr ng-repeat="weekDays in $ctrl.weeks">
-    <td ng-repeat="day in weekDays">{{ days }}</td>
+  <tr ng-repeat="weekDays in $ctrl.data.weeks track by $index">
+    <td ng-repeat="day in weekDays track by $index">{{ day || '' }}</td>
   </tr>
 </table>
