@@ -11,6 +11,7 @@ function generateMonthly(startDate, endDate, times) {
     var obj = {};
     obj.startDate = i === 0 ? startDate : getFirstDayOfMonth(addDays(shedule[i - 1].endDate, 1));
     obj.endDate = i === (times - 1) ? endDate : getLastDayOfMonth(obj.startDate);
+    obj.days = generateDays(obj.startDate, obj.endDate);
     shedule.push(obj);
   }
 
@@ -29,6 +30,15 @@ function addDays(date, days) {
   var copyOf = new Date(date.valueOf());
   var dateInMs = copyOf.setDate(copyOf.getDate() + days);
   return new Date(dateInMs);
+}
+
+function generateDays(startDate, endDate) {
+  var times = (endDate.getDate() - startDate.getDate()) + 1;
+  var days = [];
+  for (var i = 0; i < times; i++) {
+    days.push(startDate.getDate() + i);
+  }
+  return days;
 }
 
 angular
