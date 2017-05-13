@@ -9,9 +9,18 @@ function generateMonthly(startDate, endDate, times) {
   var shedule = [];
   for (i = 0; i < times; i++) {
     var obj = {};
+    var nStartSpanDays = 0;
+    var nEndSpanDays = 0;
+    var days = [];
     obj.startDate = i === 0 ? startDate : getFirstDayOfMonth(addDays(shedule[i - 1].endDate, 1));
     obj.endDate = i === (times - 1) ? endDate : getLastDayOfMonth(obj.startDate);
-    obj.days = generateDays(obj.startDate, obj.endDate);
+
+    days = generateDays(obj.startDate, obj.endDate);
+    nStartSpanDays = obj.startDate.getDay();
+    nEndSpanDays = 6 - obj.endDate.getDay();
+
+    obj.calendar = fillArray(null, nStartSpanDays).concat(days).concat(fillArray(null, nEndSpanDays));
+
     shedule.push(obj);
   }
 
@@ -39,6 +48,14 @@ function generateDays(startDate, endDate) {
     days.push(startDate.getDate() + i);
   }
   return days;
+}
+
+function fillArray(value, len) {
+  var arr = [];
+  for (var i = 0; i < len; i++) {
+    arr.push(value);
+  }
+  return arr;
 }
 
 angular
