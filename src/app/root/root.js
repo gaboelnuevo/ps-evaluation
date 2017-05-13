@@ -1,3 +1,5 @@
+/* global _ */
+
 function diffMonth(startDate, endDate) {
   var startMonths = startDate.getMonth() + (startDate.getFullYear() * 12);
   var endMonths = endDate.getMonth() + (endDate.getFullYear() * 12);
@@ -12,6 +14,7 @@ function generateMonthly(startDate, endDate, times) {
     var nStartSpanDays = 0;
     var nEndSpanDays = 0;
     var days = [];
+    var data = [];
     obj.startDate = i === 0 ? startDate : getFirstDayOfMonth(addDays(shedule[i - 1].endDate, 1));
     obj.endDate = i === (times - 1) ? endDate : getLastDayOfMonth(obj.startDate);
 
@@ -19,8 +22,9 @@ function generateMonthly(startDate, endDate, times) {
     nStartSpanDays = obj.startDate.getDay();
     nEndSpanDays = 6 - obj.endDate.getDay();
 
-    obj.calendar = fillArray(null, nStartSpanDays).concat(days).concat(fillArray(null, nEndSpanDays));
+    data = fillArray(null, nStartSpanDays).concat(days).concat(fillArray(null, nEndSpanDays));
 
+    obj.weeks = _.chunk(data, 7);
     shedule.push(obj);
   }
 
